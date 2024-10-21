@@ -1,14 +1,17 @@
-header {
+/* 通用样式 */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f8ff;
+  color: #333;
   text-align: center;
+  padding: 20px;
+}
+
+header {
   margin-bottom: 20px;
 }
 
-#main-section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
+/* 按钮样式 */
 button {
   width: 80%;
   padding: 15px;
@@ -26,6 +29,24 @@ button:hover {
   background-color: #45a049;
 }
 
-button:active {
-  transform: scale(0.98);
+#camera-section, #manual-section {
+  display: none;
+  margin-top: 20px;
+}
+
+#result-section {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #e0f7fa;
+  border-radius: 10px;
+}
+
+/* 输入框样式 */
+#manual-input {
+  width: 80%;
+  padding: 10px;
+  font-size: 1.2em;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 10px;
 }
