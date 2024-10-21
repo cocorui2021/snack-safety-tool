@@ -1,66 +1,31 @@
-// 获取视频流
-const video = document.getElementById('camera');
-navigator.mediaDevices.getUserMedia({ video: true })
-  .then((stream) => {
-    video.srcObject = stream;
-  })
-  .catch((err) => {
-    console.error('Error accessing camera: ', err);
-  });
-
-// 捕捉图像并使用Tesseract.js进行OCR识别
-const captureBtn = document.getElementById('capture-btn');
-captureBtn.addEventListener('click', () => {
-  const canvas = document.createElement('canvas');
-  canvas.width = video.videoWidth;
-  canvas.height = video.videoHeight;
-  const context = canvas.getContext('2d');
-  context.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-  // 将图片数据转换为OCR可识别的内容
-  const imageData = canvas.toDataURL('image/png');
-  recognizeText(imageData);
-});
-
-function recognizeText(imageData) {
-  Tesseract.recognize(
-    imageData, 'eng',
-    { logger: (m) => console.log(m) }
-  ).then(({ data: { text } }) => {
-    document.getElementById('result').innerText = `Recognized Text: ${text}`;
-    // 可以在这里对成分表中的文字进行进一步分析
-  });
-}
-const manualBtn = document.getElementById('manual-btn');
-manualBtn.addEventListener('click', () => {
-  const ingredient = document.getElementById('manual-input').value;
-  fetchIngredientData(ingredient);
-});
-
-// 示例函数：根据输入内容获取成分信息
-function fetchIngredientData(ingredient) {
-  const apiUrl = `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${ingredient}&search_simple=1&json=1`;
-  
-  fetch(apiUrl)
-    .then(response => response.json())
-    .then(data => {
-      if (data.count > 0) {
-        const product = data.products[0];
-        displayProductData(product);
-      } else {
-        document.getElementById('result').innerText = 'No ingredient data found!';
-      }
-    })
-    .catch(error => {
-      document.getElementById('result').innerText = 'Error fetching ingredient data.';
-    });
+header {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-function displayProductData(product) {
-  const productInfo = `
-    <h3>${product.product_name}</h3>
-    <p><strong>Ingredients:</strong> ${product.ingredients_text || 'N/A'}</p>
-    <p><strong>Nutritional Information:</strong> ${product.nutriments ? product.nutriments.sugars_100g : 'N/A'}g sugar/100g</p>
-  `;
-  document.getElementById('result').innerHTML = productInfo;
+#main-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+button {
+  width: 80%;
+  padding: 15px;
+  margin: 10px;
+  background-color: #4CAF50;
+  color: white;
+  font-size: 1.5em;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button:active {
+  transform: scale(0.98);
 }
