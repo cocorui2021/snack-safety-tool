@@ -1,39 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Snack Safety Tool</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <header>
-    <h1>Snack Safety Tool</h1>
-    <p>Scan or manually enter ingredients to check their nutritional information</p>
-  </header>
+<header>
+  <h1>Snack Safety Tool</h1>
+  <p>Scan or manually enter ingredients to check their nutritional value.</p>
+</header>
 
-  <!-- 摄像头视图区域 -->
-  <section id="camera-section">
-    <video id="camera" width="300" height="200" autoplay></video>
-    <button id="capture-btn">Capture Ingredients</button>
-  </section>
-
-  <!-- 手动输入配料的输入框 -->
-  <section id="manual-section">
-    <input type="text" id="manual-input" placeholder="Enter ingredient (e.g. sugar, oil)">
-    <button id="manual-btn">Analyze Ingredient</button>
-  </section>
-
-  <!-- 成分显示区域 -->
-  <section id="result-section">
-    <h2>Results</h2>
-    <div id="result"></div>
-  </section>
-
-  <footer>
-    <p>Data provided by <a href="https://world.openfoodfacts.org" target="_blank">OpenFoodFacts</a></p>
-  </footer>
-
-  <script src="app.js"></script>
-</body>
-</html>
+<section id="main-section">
+  <button id="scan-btn">Scan Ingredients</button>
+  <button id="manual-entry-btn">Enter Food Name</button>
+</section>
