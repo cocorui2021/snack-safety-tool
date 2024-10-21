@@ -1,13 +1,16 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f0f8ff;
-  color: #333;
-  text-align: center;
-  padding: 20px;
+#camera-section {
+  margin-top: 20px;
 }
 
-header {
-  margin-bottom: 20px;
+#manual-section {
+  margin-top: 20px;
+}
+
+#manual-input {
+  padding: 10px;
+  font-size: 1.2em;
+  width: 80%;
+  margin-bottom: 10px;
 }
 
 button {
@@ -26,9 +29,4 @@ button {
   padding: 20px;
   background-color: #e0f7fa;
   border-radius: 10px;
-}
-
-footer {
-  margin-top: 40px;
-  font-size: 0.9em;
 }
